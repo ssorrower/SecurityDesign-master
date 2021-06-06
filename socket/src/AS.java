@@ -22,7 +22,6 @@ public class AS {
             new Thread(a).start();
         }
     }
-
 }
     class Mythread  implements Runnable{
         private static String USER_REGISTE = "0000";

@@ -12,7 +12,7 @@ import java.net.Socket;
 import java.util.Date;
 
 public class V {
-    public static void main(String[] args) throws IOException {
+    /*public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(8890);
         System.out.println("V server start at:" + new Date());
         Vthread a = new Vthread();
@@ -21,8 +21,7 @@ public class V {
             a.setSocket(socket);
             new Thread(a).start();
         }
-    }
-
+    }*/
 }
 
 class Vthread  implements Runnable{
