@@ -18,30 +18,29 @@ import java.util.regex.Pattern;
 import static java.lang.Thread.sleep;
 
 public class AntChatUi {
-    public JFrame frame = new JFrame("物联网安全课程设计");
+    public JFrame frame = new JFrame("物联网安全课程设计"); // 声明窗口对象
     public static final int roomwidth=700;//认证过程的窗口宽高
     public static final int roomheight=630;
     private static final Logger log = LogManager.getLogger(AntChatUi.class);
+
     /*
-    * 判断是否为整数
-    * @param str 传入的字符串
-    * @return 是整数返回true,否则返回false
-    */
-
-
+     * 判断是否为整数
+     * @param str 传入的字符串
+     * @return 是整数返回true,否则返回false
+     */
     public boolean isInteger(String str) {
         Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
         return pattern.matcher(str).matches();
     }
 
     /*
-    * 设置窗口生成大小位置
-    * @param panel 传入的界面
-    * @return 返回定位以后的界面
-    */
+     * 设置窗口生成大小位置
+     * @param panel 传入的界面
+     * @return 返回定位以后的界面
+     */
     public void resetFrame(int curWidth, int curHeight)
     {
-        // Setting the width and height of frame
+        // 设置窗口的长和宽
         frame.setSize(roomwidth, roomheight);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //窗口在屏幕中间显示
@@ -51,7 +50,10 @@ public class AntChatUi {
         int height=dimension.height;
         int x=(width-curWidth)/2;
         int y=(height-curHeight)/2;
-        frame.setLocation(x, y);
+        frame.setLocation(x, y);//登陆界面在屏幕的位置坐标x,y
+
+
+
     }
 
 
@@ -63,26 +65,31 @@ public class AntChatUi {
          * 我们可以创建多个面板并在 JFrame 中指定位置
          * 面板中我们可以添加文本字段，按钮及其他组件。
          */
+        //创建一个JLayeredPane用于分层的。
+        JLayeredPane layeredPane=new JLayeredPane();
+
         JPanel panel = new JPanel();
-        // 添加面板
+
         frame.add(panel);
         /*
          * 调用用户定义的方法并添加组件到面板
          */
         placeComponents(frame,panel);
 
+
         // 设置界面可见
         frame.setVisible(true);
+
     }
 
 
     /*
-    *生成注册本次匿名聊天的昵称界面
-    * @param frame框架
-    * @panel 面板
-    * @jl1 显示kerberos数据框
-    * @jl2 显示数据交流数据框
-    */
+     *生成本次匿名聊天界面
+     * @param frame框架
+     * @panel 面板
+     * @jl1 显示kerberos数据框
+     * @jl2 显示数据交流数据框
+     */
     public void Anonymousroom(JPanel panel,JTextArea textarea0, JTextArea jl1, JTextArea jl2, JLabel OnlineLabel, JList<String> list, String name, BackgroundClient client)
     {
         //监听关闭窗口的事件
@@ -112,7 +119,7 @@ public class AntChatUi {
         JScrollPane jsp0 = new JScrollPane(textarea0);
         textarea0.setEditable(false);
         //设置矩形大小.参数依次为(矩形左上角横坐标x,矩形左上角纵坐标y，矩形长度，矩形宽度)
-        jsp0.setBounds(10, 20, 500, 150);
+        jsp0.setBounds(10, 20, 500, 150);//聊天内容显示框位置大小
         //默认的设置是超过文本框才会显示滚动条，以下设置让滚动条一直显示
         jsp0.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         panel.add(jsp0);
@@ -120,7 +127,7 @@ public class AntChatUi {
          * 创建文本域用于用户输入
          */
         JTextField userText = new JTextField(20);
-        userText.setBounds(10,175,165,25);
+        userText.setBounds(10,175,165,25);//聊天内容输入框位置大小
         panel.add(userText);
 
         // 创建发送按钮
@@ -156,12 +163,12 @@ public class AntChatUi {
 
 
     /*
-    *生成注册本次匿名聊天的昵称界面
-    * @param frame框架
-    * @panel 面板
-    * @jl1 显示kerberos数据框
-    * @jl2 显示数据交流数据框
-    */
+     *生成注册本次匿名聊天昵称界面
+     * @param frame框架
+     * @panel 面板
+     * @jl1 显示kerberos数据框
+     * @jl2 显示数据交流数据框
+     */
     public void inputFunname(JFrame frame, JPanel panel, JTextArea textarea1, JTextArea textarea2, JLabel OnlineLabel, JList<String> list, BackgroundClient client) throws IOException {
         client.update(textarea1,textarea2);
         client.StartThread();
@@ -181,7 +188,7 @@ public class AntChatUi {
         panel.add(userText);
         panel.add(jl0);
 
-            // 创建确认按钮
+        // 创建确认按钮
         JButton confirmButton = new JButton("确认");
         confirmButton.addActionListener(new ActionListener() {
             @Override
@@ -219,7 +226,9 @@ public class AntChatUi {
         panel.add(confirmButton);
     }
 
-
+    /*
+     *生成认证注册身份界面
+     */
     private void placeComponents(JFrame frame,JPanel panel) {
         /*
          * 这边设置布局为 null
@@ -229,33 +238,33 @@ public class AntChatUi {
         // 定义一个容器
         // 文本域
         JLabel OnlineLabel = new JLabel("当前在线群友");
-        OnlineLabel.setBounds(520,20,80,25);
+        OnlineLabel.setBounds(550,215,80,25);
         panel.add(OnlineLabel);
 
         //显示在线人员
         JList<String> list = new JList<String>();
-        list.setBounds(520, 50, 120, 455);
+        list.setBounds(550, 245, 120, 300);
         panel.add(list);
 
-        JLabel jl01 = new JLabel("用户ID(4位数字如0023)：");
+        JLabel jl01 = new JLabel("账号(4位数字)：");
         final JTextField jtf01 = new JTextField();
-        JLabel jl02 = new JLabel("用户口令(6-12字符串如anc123):");
+        JLabel jl02 = new JLabel("密码(6-12字符串):");
         final JPasswordField jpf01 = new JPasswordField();
         // 设置密码字符为*
         jpf01.setEchoChar('*');
-        // 创建"提交"按钮
+        // 创建"认证"按钮
         JButton jb01 = new JButton("认证");
         // 创建"重置"按钮
         JButton jb02 = new JButton("重置");
         // 创建"注册"按钮
         JButton jb03 = new JButton("注册");
         //kerberos数据
-        JLabel jl1 = new JLabel("--------------------------------------------------Kerberos认证过程----------------------------------------------\n");
+        JLabel jl1 = new JLabel("Kerberos认证过程:\n");
 
         JTextArea textarea1=new JTextArea(" ");
         textarea1.setEditable(false);
         //数据交流部分
-        JLabel jl2 = new JLabel("----------------------------------------------------数据交流部分---------------------------------------------------");
+        JLabel jl2 = new JLabel("数据交流部分:");
 
         JTextArea textarea2=new JTextArea(" ");
         textarea2.setEditable(false);
@@ -313,7 +322,7 @@ public class AntChatUi {
                 } else if (jtf01.getText().trim().length() == 0){
                     JOptionPane.showMessageDialog(null, "用户ID不能为空!");
                 }
-                  else if (new String(jpf01.getPassword()).trim().length() == 0){
+                else if (new String(jpf01.getPassword()).trim().length() == 0){
                     JOptionPane.showMessageDialog(null, "用户口令不能为空!");
                 } else {
                     JOptionPane.showMessageDialog(null, "格式错误");
@@ -352,35 +361,36 @@ public class AntChatUi {
         panel.add(jb03);
         // 设置各组件的位置以及大小
 
-        int jb_begin = 30;
+        int jb_begin = 210;
         int jb_distanse = 110;
         int height = 30;
-        jl01.setBounds(10, 30, 200, height);
-        jtf01.setBounds(230, 30, 210, height);
-        jl02.setBounds(10, 80, 200, height);
-        jpf01.setBounds(230, 80, 210, height);
-        jb01.setBounds(jb_begin, 130, 70, height);
-        jb02.setBounds(jb_begin + jb_distanse, 130, 70, height);
-        jb03.setBounds(jb_begin + 2*jb_distanse, 130, 70, height);
-
+        jl01.setBounds(150, 50, 100, height);//账号label
+        jtf01.setBounds(250, 50, 210, height);//账号框
+        jl02.setBounds(150, 100, 100, height);//密码label
+        jpf01.setBounds(250, 100, 210, height);//密码框
+        jb01.setBounds(jb_begin, 180, 70, height);//认证按钮
+        jb02.setBounds(jb_begin + jb_distanse, 180, 70, height);//重置按钮
+        jb03.setBounds(jb_begin + 2*jb_distanse, 180, 70, height);//注册按钮
+        jb01.setBackground(Color.orange);
+        jb02.setBackground(Color.orange);
+        jb03.setBackground(Color.orange);
 
         //创建显示文字的区域
-
         JScrollPane jsp1 = new JScrollPane(textarea1);
         //设置矩形大小.参数依次为(矩形左上角横坐标x,矩形左上角纵坐标y，矩形长度，矩形宽度)
-        jl1.setBounds(10, 205, 500, 30);
-        jsp1.setBounds(10, 235, 500, 150);
+        jl1.setBounds(10, 215, 250, 30);//label位置
+        jsp1.setBounds(10, 245, 250, 300);//滚动条
         //默认的设置是超过文本框才会显示滚动条，以下设置让滚动条一直显示
         jsp1.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         //把滚动条添加到容器里面
         panel.add(jsp1);
         panel.add(jl1);
-
-                //创建显示文字的区域
+        panel.setBackground(Color.PINK);
+        //创建显示文字的区域
         JScrollPane jsp2 = new JScrollPane(textarea2);
         //设置矩形大小.参数依次为(矩形左上角横坐标x,矩形左上角纵坐标y，矩形长度，矩形宽度)
-        jl2.setBounds(10, 385, 500, 30);
-        jsp2.setBounds(10, 415, 500, 150);
+        jl2.setBounds(280, 215, 250, 30);
+        jsp2.setBounds(280, 245, 250, 300);
         //默认的设置是超过文本框才会显示滚动条，以下设置让滚动条一直显示
         jsp2.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         //把滚动条添加到容器里面
