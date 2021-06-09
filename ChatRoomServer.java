@@ -230,7 +230,6 @@ public class ChatRoomServer {
             return false;
         }
         DES d=new DES(map.get(sc0)[0]);
-        System.out.println("message="+message);
         message=d.decrypt_string(message);
         if(message == null){
             return false;
