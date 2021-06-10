@@ -119,7 +119,7 @@ public class AntChatUi {
         JScrollPane jsp0 = new JScrollPane(textarea0);
         textarea0.setEditable(false);
         //设置矩形大小.参数依次为(矩形左上角横坐标x,矩形左上角纵坐标y，矩形长度，矩形宽度)
-        jsp0.setBounds(10, 20, 500, 150);//聊天内容显示框位置大小
+        jsp0.setBounds(100, 20, 500, 150);//聊天内容显示框位置大小
         //默认的设置是超过文本框才会显示滚动条，以下设置让滚动条一直显示
         jsp0.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         panel.add(jsp0);
@@ -127,14 +127,14 @@ public class AntChatUi {
          * 创建文本域用于用户输入
          */
         JTextField userText = new JTextField(20);
-        userText.setBounds(10,175,165,25);//聊天内容输入框位置大小
+        userText.setBounds(100,175,165,25);//聊天内容输入框位置大小
         panel.add(userText);
 
         // 创建发送按钮
         JButton sendButton = new JButton("发送");
         // 实现"重置"按钮功能
 
-        sendButton.setBounds(185, 175, 80, 25);
+        sendButton.setBounds(275, 175, 80, 25);
         panel.add(sendButton);
         //jl2.setForeground(Color.red);
         jl2.setEditable(false);
@@ -183,8 +183,8 @@ public class AntChatUi {
          */
         JLabel jl0 = new JLabel("输入本次聊天昵称\n");
         JTextField userText = new JTextField(20);
-        userText.setBounds(10,60,165,25);
-        jl0.setBounds(10, 30, 500, 40);
+        userText.setBounds(260,90,180,25);
+        jl0.setBounds(260, 50, 500, 40);
         panel.add(userText);
         panel.add(jl0);
 
@@ -222,7 +222,7 @@ public class AntChatUi {
 
             }
         });
-        confirmButton.setBounds(185, 60, 80, 25);
+        confirmButton.setBounds(310, 150, 80, 25);
         panel.add(confirmButton);
     }
 
