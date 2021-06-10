@@ -237,7 +237,6 @@ public class ChatRoomServer {
         String type0=message.substring(0,4);
         int type=Integer.parseInt(type0);
         if(type == USER_SEND){
-            System.out.println("message1="+message);
             String len=message.substring(4,12);
             int length=Integer.parseInt(len);
             String info=message.substring(12,12+length);

@@ -68,12 +68,12 @@ public class BackgroundClient {
     private  BigInteger[] selfkey = new BigInteger[2];//client的私钥
     RSA rsa;
 
-    private static final String AS_IP = "192.168.43.168";
-    private static final String TGS_IP = "192.168.43.168";
-    private static final String V_IP = "192.168.43.168";
 //    private static final String AS_IP = "192.168.43.168";
-//    private static final String TGS_IP = "192.168.43.94";
-//    private static final String V_IP = "192.168.43.49";
+//    private static final String TGS_IP = "192.168.43.168";
+//    private static final String V_IP = "192.168.43.168";
+    private static final String AS_IP = "192.168.43.168";
+    private static final String TGS_IP = "192.168.43.94";
+    private static final String V_IP = "192.168.43.49";
     private static final int AS_PORT = 8888;
     private static final int TGS_PORT = 8889;
     static Socket socket = null;
